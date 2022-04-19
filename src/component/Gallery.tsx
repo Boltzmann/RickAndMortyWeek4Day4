@@ -13,7 +13,7 @@ export default function Gallery({characters}:characterGalleryProps){
     console.log(count)
 
     const onButtonClick = () => {
-        console.log("Click me!")
+        console.log("Like")
         setCount(count+1)
 
     }
