@@ -7,6 +7,8 @@ type characterGalleryProps = {
     characters : Character[]
 }
 
+
+
 export default function Gallery({characters}:characterGalleryProps){
     const [text, setText] = useState<string>("Type some text to filter characters...")
     const [filteredCharacters, setFilteredCharacters] = useState<Character[]> (characters);
@@ -14,16 +16,21 @@ export default function Gallery({characters}:characterGalleryProps){
     const onTextChange = (event: ChangeEvent<HTMLInputElement>) => {
         console.log(event.target.value)
         setText(event.target.value)
-        setFilteredCharacters(characters.filter(character => character.name.includes(event.target.value)))
         console.log(filteredCharacters)
     }
 
-    // One could put a button here to reset text:
-    // setText("")
+    const onButtonClick = () => {
+        setFilteredCharacters(characters.filter(character => character.name.includes(text)))
+    }
+
+    const onResetButtonClick = () => {
+        setFilteredCharacters(characters)
+    }
 
     return <div id="gallery">
-        <div>Filter: {text}</div>
         <input onChange={onTextChange}/>
+        <button onClick={onButtonClick} id="gallery-button">Filter cards</button>
+        <button onClick={onResetButtonClick} id="gallery-button">Reset filter</button>
         <div id="gallery-cards"> {filteredCharacters.map( obj => <CharacterCard character={obj} />)} </div></div>
 }
 
