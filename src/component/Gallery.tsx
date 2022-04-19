@@ -1,24 +1,28 @@
 import {Character} from "../model/Character";
 import CharacterCard from "./CharacterCard";
 import "./Gallery.css"
-import React, {useState} from "react";
+import React, {ChangeEvent, useState} from "react";
 
 type characterGalleryProps = {
     characters : Character[]
 }
 
 export default function Gallery({characters}:characterGalleryProps){
-    const [count, setCount] = useState<number>(0)
+    const [text, setText] = useState<string>("Type some text to filter characters...")
 
-    console.log(count)
 
-    const onButtonClick = () => {
-        console.log("Like")
-        setCount(count+1)
-
+    const onTextChange = (event: ChangeEvent<HTMLInputElement>) => {
+        console.log(event)
+        console.log(event.target.value)
+        setText(event.target.value)
     }
-    return <div id="gallery"><div>Button clicked: {count}</div>
-    <button onClick={onButtonClick} id="gallery-button">Click me!</button>
-        <div id="gallery-cards"> {characters.map( obj => <CharacterCard character={obj} />)} </div></div>
+
+    // One could put a button here to reset text:
+    // setText("")
+
+    return <div id="gallery">
+        <div>Filter: {text}</div>
+        <input onChange={onTextChange}/>
+        <div id="gallery-cards"> {characters.map( obj => <CharacterCard character={obj}/>)} </div></div>
 }
 
