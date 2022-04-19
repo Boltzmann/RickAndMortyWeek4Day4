@@ -3,6 +3,7 @@ import './App.css';
 import Title from "./component/Title";
 import Gallery from "./component/Gallery";
 import {Character} from "./model/Character";
+import NoSuchCharacter from "./component/NoSuchCharacter";
 
 export default function App() {
     const [fetchedCharacters, setFetchedCharacters] = useState<Character[]>([]);
@@ -27,10 +28,10 @@ export default function App() {
 
   return (
     <div>
-
-      <Title />
-        <Gallery characters = {fetchedCharacters} />
-
+        <Title />
+        {fetchedCharacters.length > 0 ?
+            (<Gallery characters = {fetchedCharacters} />) :
+            (<NoSuchCharacter/>)}
     </div>
   );
 }
