@@ -14,9 +14,7 @@ export default function Gallery({characters}:characterGalleryProps){
     const [filteredCharacters, setFilteredCharacters] = useState<Character[]> (characters);
 
     const onTextChange = (event: ChangeEvent<HTMLInputElement>) => {
-        console.log(event.target.value)
         setText(event.target.value)
-        console.log(filteredCharacters)
     }
 
     const onButtonClick = () => {
