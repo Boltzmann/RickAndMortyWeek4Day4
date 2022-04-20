@@ -1,7 +1,16 @@
 #gallery {
-    //width: 80%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-content: space-evenly;
+}
+
+#gallery-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+}
+
+#gallery-button {
 }

@@ -1,0 +1,14 @@
+#CharacterDetailsCard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#CharacterDetailsCard img {
+    align-self: start;
+}
+
+
+.characterDetails {
+    text-align: center;
+}

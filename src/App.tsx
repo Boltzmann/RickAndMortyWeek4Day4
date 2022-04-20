@@ -1,17 +1,25 @@
 import React from 'react';
 import './App.css';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import GalleryPage from "./pages/GalleryPage";
+import HomePage from "./pages/HomePage";
 import Title from "./component/Title";
-import {exportedDatas} from "./repo/Datas";
-import Gallery from "./component/Gallery";
+import CharacterDetailsPage from "./pages/CharacterDetailsPage";
 
 export default function App() {
-  return (
-    <div>
+    return (
+        <div>
 
-      <Title />
-        <Gallery characters = {exportedDatas} />
-
-    </div>
-  );
+        <BrowserRouter>
+            <Title/>
+            <Routes>
+                <Route path={"home"} element={<HomePage />}/>
+                <Route path={"/character/:id"} element={<CharacterDetailsPage/>}/>
+                <Route path={"gallery"} element={<GalleryPage />}/>
+            </Routes>
+        </BrowserRouter>
+        </div>
+    )
 }
+
 
