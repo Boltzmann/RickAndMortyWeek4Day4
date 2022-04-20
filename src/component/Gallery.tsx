@@ -26,13 +26,17 @@ export default function Gallery({characters}:characterGalleryProps){
         setFilteredCharacters(characters)
     }
 
+    function getFilteredCharacters() {
+        return filteredCharacters.map(obj => <CharacterCard character={obj}/>);
+    }
+
     return <div id="gallery">
         <input onChange={onTextChange}/>
         <button onClick={onButtonClick} id="gallery-button">Filter cards</button>
         <button onClick={onResetButtonClick} id="gallery-button">Reset filter</button>
         <div>
             {filteredCharacters.length > 0 ?
-                (<div id="gallery-cards"> {filteredCharacters.map(obj => <CharacterCard character={obj}/>)} </div>) :
+                (<div id="gallery-cards"> {getFilteredCharacters()} </div>) :
                 (<div><NoSuchCharacter /></div>)
             }
         </div></div>

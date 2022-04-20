@@ -1,38 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './App.css';
-import Title from "./component/Title";
-import Gallery from "./component/Gallery";
-import {Character} from "./model/Character";
-import NoSuchCharacter from "./component/NoSuchCharacter";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import GalleryPage from "./pages/GalleryPage";
+import HomePage from "./pages/HomePage";
 
 export default function App() {
-    const [fetchedCharacters, setFetchedCharacters] = useState<Character[]>([]);
-
-        const fetchCharacters = () => {
-          return fetch('https://rickandmortyapi.com/api/character')
-            .then(response => {
-                if(response.ok){
-                    return response.json()
-                }
-                throw new Error("Network error")
-            }).catch(console.error)
-    }
-
-    useEffect(() => {
-        fetchCharacters()
-            .then(body => {
-                setFetchedCharacters(body.results)
-                console.log(body.results)
-            })
-    }, [])
-
-  return (
-    <div>
-        <Title />
-        {fetchedCharacters.length > 0 ?
-            (<Gallery characters = {fetchedCharacters} />) :
-            (<NoSuchCharacter/>)}
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path={"home"} element={<HomePage />}>Home</Route>
+                <Route path={"gallery"} element={<GalleryPage />}>Gallery</Route>
+            </Routes>
+        </BrowserRouter>
+    )
 }
 
