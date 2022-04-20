@@ -19,5 +19,7 @@ export default function CharacterDetailCard({character} : CharacterProps) {
          <div>Species: {character.species}</div>
          <div>Created: {character.created}</div>
         </div>
+        <div>Episodes: {character.episode.map(ep => <div>{ep}</div>)}</div>
     </div>
+
 }

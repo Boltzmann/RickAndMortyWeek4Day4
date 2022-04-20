@@ -7,6 +7,7 @@ export type Character = {
     gender: string;
     type : string;
     origin :{name:string};
-    location :{name:string};
+    location : {name:string};
+    episode : string[];
     created: string;
 }
