@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import {Character} from "../model/Character";
-import Title from "../component/Title";
 import Gallery from "../component/Gallery";
 import NoSuchCharacter from "../component/NoSuchCharacter";
 
@@ -27,7 +26,6 @@ export default function GalleryPage() {
 
     return (
         <div>
-            <Title/>
             {fetchedCharacters.length > 0 ?
                 (<Gallery characters={fetchedCharacters}/>) :
                 (<NoSuchCharacter/>)}
