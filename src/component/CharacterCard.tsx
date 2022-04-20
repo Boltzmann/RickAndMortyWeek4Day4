@@ -8,9 +8,7 @@ type CharacterProps = {
 }
 
 export default function CharacterCard({character} : CharacterProps) {
-
     const navigate = useNavigate();
-
     const onCardClick = () => {
         navigate(`/character/${character.id}`)
     }
