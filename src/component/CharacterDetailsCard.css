@@ -1,0 +1,8 @@
+#CharacterDetailsCard img {
+    display: flex;
+}
+
+.characterDetails {
+    padding: 20px;
+    text-align: center;
+}

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Character} from "../model/Character";
 import {useParams} from "react-router-dom";
-import CharacterCard from "../component/CharacterCard";
+import CharacterDetailCard from "../component/CharacterDetailCard";
 
 
 export default function CharacterDetailsPage() {
@@ -29,7 +29,7 @@ export default function CharacterDetailsPage() {
 
     return (
         <div>
-            {fetchedCharacter && <CharacterCard character={fetchedCharacter}/>}
+            {fetchedCharacter && <CharacterDetailCard character={fetchedCharacter}/>}
         </div>
     );
 
