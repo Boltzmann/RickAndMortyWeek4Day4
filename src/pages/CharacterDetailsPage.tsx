@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Character} from "../model/Character";
 import {useParams} from "react-router-dom";
 import CharacterDetailCard from "../component/CharacterDetailCard";
+import axios from "axios";
 
 
 export default function CharacterDetailsPage() {
@@ -10,21 +11,11 @@ export default function CharacterDetailsPage() {
     const [fetchedCharacter, setFetchedCharacter] = useState<Character>();
     const url:string = "https://rickandmortyapi.com/api/character/" + id
 
-    const fetchCharacter = () => {
-        return fetch(url)
-            .then(response => {
-                if (response.ok) {
-                    return response.json()
-                }
-                throw new Error("Network error")
-            }).catch(console.error)
-    }
-
     useEffect(() => {
-        fetchCharacter()
-            .then(body => {
-                setFetchedCharacter(body)
-            })
+        axios.get(url)
+            .then(response => response.data)
+            .then(character => setFetchedCharacter(character))
+            .catch(console.error)
     }, [])
 
     return (

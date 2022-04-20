@@ -19,6 +19,6 @@ export default function CharacterCard({character} : CharacterProps) {
         <div className="characterText">{character.name}</div>
         <img src={character.image} alt={character.image}/>
         <div className="characterText">{character.location.name}</div>
-        <div className="characterText"><LikeCharacterButton /></div>
+        <div className="characterText" ><LikeCharacterButton /></div>
     </div>
 }
