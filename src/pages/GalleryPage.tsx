@@ -1,28 +1,11 @@
-import React, {useEffect, useState} from "react";
-import {Character} from "../model/Character";
+import React from "react";
 import Gallery from "../component/Gallery";
 import NoSuchCharacter from "../component/NoSuchCharacter";
+import useCharacters from "../hooks/useCharacters";
 
 export default function GalleryPage() {
-    const [fetchedCharacters, setFetchedCharacters] = useState<Character[]>([]);
 
-    const fetchCharacters = () => {
-        return fetch('https://rickandmortyapi.com/api/character')
-            .then(response => {
-                if (response.ok) {
-                    return response.json()
-                }
-                throw new Error("Network error")
-            }).catch(console.error)
-    }
-
-    useEffect(() => {
-        fetchCharacters()
-            .then(body => {
-                setFetchedCharacters(body.results)
-                console.log(body.results)
-            })
-    }, [])
+    const fetchedCharacters = useCharacters()
 
     return (
         <div>
