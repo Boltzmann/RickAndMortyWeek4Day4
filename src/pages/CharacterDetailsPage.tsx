@@ -16,7 +16,7 @@ export default function CharacterDetailsPage() {
             .then(response => response.data)
             .then(character => setFetchedCharacter(character))
             .catch(console.error)
-    }, [])
+    }, [url])
 
     return (
         <div>
